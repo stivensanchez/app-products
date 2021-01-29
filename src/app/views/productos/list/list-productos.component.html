@@ -1,0 +1,64 @@
+<h3>Productos Activos</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Codigo</th>
+            <th>Precio</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listProductosActivos">
+            <td>{{ item.id }}</td>
+            <td>{{ item.producto }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.codigo }}</td>
+            <td>{{ item.precio }}</td>
+            <td>{{ item.estado }}</td>
+            <td>
+                <a routerLink="./../detail/{{ item.id }}">Ver</a>
+                <a routerLink="./../edit/{{ item.id }}">Editar</a>
+                <button (click)="deleteProducto(item.id)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Productos Inactivos</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Codigo</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th colspan="3">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listProductosInactivos">
+            <td>{{ item.id }}</td>
+            <td>{{ item.producto }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.codigo }}</td>
+            <td>{{ item.precio }}</td>
+            <td>{{ item.estado }}</td>
+            <td>
+                <a routerLink="./../detail/{{ item.id }}">Ver</a>
+                <a routerLink="./../edit/{{ item.id }}">Editar</a>
+                <button (click)="deleteProducto(item.id)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<a routerLink="./../create">Nuevo Producto</a>

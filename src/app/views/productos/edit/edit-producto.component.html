@@ -1,0 +1,20 @@
+<label for="inputText">Producto</label>
+<input type="text" name="producto" [(ngModel)]="productoModel.producto">
+
+<label for="inputText">Descripción</label>
+<input type="text" name="descripcion" [(ngModel)]="productoModel.descripcion">
+
+<label for="inputText">Codigo</label>
+<input type="text" name="codigo" [(ngModel)]="productoModel.codigo">
+
+<label for="inputText">Precio</label>
+<input type="text" name="precio" [(ngModel)]="productoModel.precio">
+
+<label for="inputText">Estado</label>
+<input type="radio" name="estado" [(ngModel)]="productoModel.estado" [value] = true>true
+<input type="radio" name="estado" [(ngModel)]="productoModel.estado" [value] = false>false
+
+<hr>
+
+<button (click)="updateProducto()">Editar Producto</button>
+<a routerLink="./../../list">Cancelar</a>
