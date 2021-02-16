@@ -7,6 +7,7 @@ import { ProductoModel } from 'src/app/shared/models/producto.model';
 
 // Services
 import { ProductoService } from 'src/app/shared/services/producto.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component(
     {
@@ -16,6 +17,9 @@ import { ProductoService } from 'src/app/shared/services/producto.service';
 export class CreateProductoComponent
 {
     objectoProducto: ProductoModel;
+    
+    // Formulario Reactivo
+    formularioProducto: FormGroup;
 
     constructor(
         private _productoService: ProductoService,

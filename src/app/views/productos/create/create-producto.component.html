@@ -1,20 +1,22 @@
-<label for="inputText">Producto</label>
-<input type="text" name="producto" [(ngModel)]="objectoProducto.producto">
+<form [formGroup]="formularioProducto">
+    <label for="inputText">Producto</label>
+    <input type="text" name="producto" [(ngModel)]="objectoProducto.producto">
 
-<label for="inputText">Descripción</label>
-<input type="text" name="descripcion" [(ngModel)]="objectoProducto.descripcion">
+    <label for="inputText">Descripción</label>
+    <input type="text" name="descripcion" [(ngModel)]="objectoProducto.descripcion">
 
-<label for="inputText">Codigo</label>
-<input type="text" name="codigo" [(ngModel)]="objectoProducto.codigo">
+    <label for="inputText">Codigo</label>
+    <input type="text" name="codigo" [(ngModel)]="objectoProducto.codigo">
 
-<label for="inputText">Precio</label>
-<input type="text" name="precio" [(ngModel)]="objectoProducto.precio">
+    <label for="inputText">Precio</label>
+    <input type="text" name="precio" [(ngModel)]="objectoProducto.precio">
 
-<label for="inputText">Estado</label>
-<input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = true>true
-<input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = false>false
+    <label for="inputText">Estado</label>
+    <input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = true>true
+    <input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = false>false
 
-<hr>
+    <hr>
 
-<button (click)="createProducto()">Guardar Producto</button>
-<a routerLink="./../list">Cancelar</a>
+    <button (click)="createProducto()">Guardar Producto</button>
+    <a routerLink="./../list">Cancelar</a>
+</form>
