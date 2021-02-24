@@ -1,22 +1,55 @@
 <form [formGroup]="formularioProducto">
+    <label for="inpuText">Id</label>
+    <input type="text" name="id" formControlName="id">
+    <ng-container *ngTemplateOutlet="messagePattern; context: { error: formularioProducto.get('id').errors, text: 'Solo pueden ser números' }"></ng-container>
+
     <label for="inputText">Producto</label>
-    <input type="text" name="producto" [(ngModel)]="objectoProducto.producto">
+    <input type="text" name="producto" formControlName="producto">
+    <ng-container *ngTemplateOutlet="messagePattern; context : { error: formularioProducto.get('producto').errors, text: 'Solo se pueden letras' }"></ng-container>
+    <!-- <p *ngIf="formularioProducto.controls['producto'].hasError('required')"><i>Campo Requerido</i></p> -->
 
     <label for="inputText">Descripción</label>
-    <input type="text" name="descripcion" [(ngModel)]="objectoProducto.descripcion">
+    <input type="text" name="descripcion" formControlName="descripcion">
 
     <label for="inputText">Codigo</label>
-    <input type="text" name="codigo" [(ngModel)]="objectoProducto.codigo">
+    <input type="text" name="codigo" formControlName="codigo" [controlErrorsTpl]="messageCodigo">
 
     <label for="inputText">Precio</label>
-    <input type="text" name="precio" [(ngModel)]="objectoProducto.precio">
+    <input type="text" name="precio" formControlName="precio">
+    <ng-container *ngTemplateOutlet="messagePattern; context: { error: formularioProducto.get('precio').errors, text: 'Debe ser un número con decimal' }"></ng-container>
 
     <label for="inputText">Estado</label>
-    <input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = true>true
-    <input type="radio" name="estado" [(ngModel)]="objectoProducto.estado" [value] = false>false
+    <input type="radio" name="estado" formControlName="estado" [value] = true>true
+    <input type="radio" name="estado" formControlName="estado" [value] = false>false
 
     <hr>
 
     <button (click)="createProducto()">Guardar Producto</button>
     <a routerLink="./../list">Cancelar</a>
 </form>
+
+<div>
+    {{ formularioProducto.valid | json }}
+    <!-- {{ formularioProducto.get('id').errors.pattern | json }} -->
+    <!-- {{ formularioProducto.get('id').errors | json }} -->
+</div>
+
+<!-- Ng Templates -->
+
+<ng-template let-error let-text="text" #messageCodigo>
+    <!-- {{ error | json }} {{ text }} -->
+
+    <b>Error: </b>
+
+    <div *ngIf="error?.minlength">
+        <i style="color: red;">No cumples con los caracteres minimos que son ({{ error?.minlength?.requiredLength }}), ingresaste solo {{ error?.minlength?.actualLength }}</i>
+    </div>
+</ng-template>
+
+<ng-template let-error="error" let-text="text" #messagePattern>
+   <!-- {{  error | json }} {{ text }} -->
+
+    <div *ngIf="error?.pattern?.requiredPattern">
+        <i style="color: red;">{{ text }}</i>
+    </div>
+</ng-template>
